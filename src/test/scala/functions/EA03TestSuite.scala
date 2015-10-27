@@ -57,7 +57,7 @@ class EA03TestSuite extends FunSuite {
 
     test("flatMap maps and flattens") {
         assert(flatMap((1 to 5).toList)(x => (x to 5).toList) ==
-            List(1,2,3,4,5, 2,3,4,5, 3,4,5, 4,5, 5))
+          List(1,2,3,4,5, 2,3,4,5, 3,4,5, 4,5, 5))
     }
 
     // Combined
