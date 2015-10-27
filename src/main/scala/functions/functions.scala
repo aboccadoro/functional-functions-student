@@ -1,5 +1,7 @@
 package functions
 
+import scala.reflect.internal.Variance
+
 object EA03 {
 
     // FUNCTIONAL BASICS:
@@ -11,15 +13,19 @@ object EA03 {
      * @param ls: List[A] the list to process
      * @return A list containing all but the first element of ls
      */
+    def tail[A](ls: List[A]): List = ???
+    // TODO
 
     /**
      * setHead replaces the first value in a list with a given value. If the
      * list is empty, it adds the value to the front of the list.
      * @param ls: List[A] the list to be changed
      * @param a: A the value that will replace the head of ls
-     * @return a list whose head is `a' and whose tail is all but the first
+     * @return a list whose head is 'a' and whose tail is all but the first
      * element of ls.
      */
+    def setHead[A](ls: List, a: A): List[A] = ???
+    // TODO
 
     /**
      * drop removes n elements from the given list. If n is greater than the
@@ -28,6 +34,8 @@ object EA03 {
      * @param n: Int the number of elements to drop.
      * @return a list with the first n elements of ls removed, or an empty list.
      */
+    def drop[A](ls: List[A], n: Int): List[A] = ???
+    // TODO
 
     /**
      * init takes a list and removes the last element.
@@ -36,6 +44,8 @@ object EA03 {
      * @param ls: List[A] the list to be changed.
      * @return a list with the last element of ls removed.
      */
+    def init[A](ls: List[A]): List[A] = ???
+    // TODO
 
     // LIST FOLDING
 
@@ -64,6 +74,17 @@ object EA03 {
      * the sublists into one long list. For example, flatten(List(List(1,2,3),
      * List(4,5,6))) produces List(1,2,3,4,5,6).
      */
+    def sum(ls: List[Double]): Double = ???
+    // TODO
+
+    def product[A](ls: List[A]): Int = ???
+    // TODO
+
+    def reverse[A](ls: List[A]): List[A] = ???
+    // TODO
+
+    def flatten[A](ls: List[List[A]]): List[A] = ???
+    // TODO
 
     // MAP AND FILTER
 
@@ -75,6 +96,8 @@ object EA03 {
      * @param f: A => B the function to be applied to each element of the input.
      * @return the resulting list from applying f to each element of ls.
      */
+    def map[A, B](ls: List[A], f: A => B): List = ???
+    // TODO
 
     /**
      * filter removes all elements from a list for which a given predicate
@@ -84,6 +107,8 @@ object EA03 {
      * @param f: A => Boolean the predicate
      * @return the filtered list.
      */
+    def filter[A](ls: List[A], f: A => Boolean): List[A] = ???
+    // TODO
 
     /**
      * flatMap is very similar to map. However, the function returns a List,
@@ -93,6 +118,8 @@ object EA03 {
      * @return a List[B] containing the flattened results of applying f to all
      * elements of ls.
      */
+    def flatMap[A, B](ls: List[A], f: A => List[B]): List[B] = ???
+    // TODO
 
     // COMBINING FUNCTIONS
 
@@ -105,16 +132,20 @@ object EA03 {
      * length is greater than 0.
      * @return the average value of the largest values in the pairs.
      */
+    def maxAverage(ls: List[(Double, Double)]): Double = ???
+    // TODO
 
     /**
      * variance takes a List[Double] and calculates the squared distance
      * of each value from the mean. This is the *variance*, as used in
      * statistics.
      * 1) Find the mean M of the input.
-     * 2) For each value V in the input, calculate (V - M)^2.
+     * 2) For each value V in the input, calculate (V - M) squared.
      * 3) Find the variance.
      * Which methods that we've already defined can you use? (At least one!)
      * @param ls: List[Double] a list of values, whose length is greater than 0.
-     * @param return the variance of the input.
+     * @return  the variance of the input.
      */
+    def variance(ls: List[Double]): Variance = ???
+    // TODO
 }
