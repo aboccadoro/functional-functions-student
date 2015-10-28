@@ -18,7 +18,6 @@ object EA03 {
       case x :: Nil => List[A]()
       case x :: xs => xs
     }
-    // TODO
 
     /**
      * setHead replaces the first value in a list with a given value. If the
@@ -33,7 +32,6 @@ object EA03 {
       case x :: Nil => List[A](a)
       case _ :: xs => a +: xs
     }
-    // TODO
 
     /**
      * drop removes n elements from the given list. If n is greater than the
@@ -47,7 +45,6 @@ object EA03 {
       case x :: Nil => if(n == 0) List[A](x) else List[A]()
       case _ :: xs  => if(n > 0) drop(xs, n - 1) else xs
     }
-    // TODO
 
     /**
      * init takes a list and removes the last element.
@@ -61,7 +58,6 @@ object EA03 {
       case _ :: Nil => List[A]()
       case x :: xs => x +: init(xs)
     }
-    // TODO
 
     // LIST FOLDING
 
@@ -81,7 +77,6 @@ object EA03 {
       case x :: Nil => f(z, x)
       case x :: xs => foldLeft(xs, f(z, x))(f)
     }
-    // TODO
 
     /**
      * Use your implementation of foldLeft to implement these functions:
@@ -95,20 +90,15 @@ object EA03 {
      * the sublists into one long list. For example, flatten(List(List(1,2,3),
      * List(4,5,6))) produces List(1,2,3,4,5,6).
      */
-    def sum(ls: List[Double]): Double = foldLeft(ls, ls.head)((B, A) => A + B)
-    // TODO
+    def sum(ls: List[Double]): Double = foldLeft(ls, 0.0)((B, A) => B + A)
 
-    def product[A](ls: List[A]): Int = foldLeft(ls, ls.head)((B, A) => A * B)
-    // TODO
+    def product[A](ls: List[Double]): Int = foldLeft(ls, 1)((B, A) => (B * A).toInt)
 
-    def length[A](ls: List[A]): Int = ???
-    // TODO
+    def length[A](ls: List[A]): Int = foldLeft(ls, 0)((B, A) => B + 1)
 
-    def reverse[A](ls: List[A]): List[A] = ???
-    // TODO
+    def reverse[A](ls: List[A]): List[A] = foldLeft(ls, List[A]())((B, A) => A +: B)
 
-    def flatten[A](ls: List[List[A]]): List[A] = ???
-    // TODO
+    def flatten[A](ls: List[List[A]]): List[A] = foldLeft(ls, List[A]())((B, A) => B ++ A)
 
     // MAP AND FILTER
 
@@ -120,7 +110,9 @@ object EA03 {
      * @param f: A => B the function to be applied to each element of the input.
      * @return the resulting list from applying f to each element of ls.
      */
-    def map[A, B](ls: List[A], f: A => B): List[B] = ???
+    def map[A, B](ls: List[A], f: A => B): List[B] = {
+
+    }
     // TODO
 
     /**
