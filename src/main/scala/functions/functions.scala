@@ -110,10 +110,11 @@ object EA03 {
      * @param f: A => B the function to be applied to each element of the input.
      * @return the resulting list from applying f to each element of ls.
      */
-    def map[A, B](ls: List[A], f: A => B): List[B] = {
-
+    def map[A, B](ls: List[A])(f: A => B): List[B] = ls match {
+      case Nil => List[B]()
+      case x :: Nil => List[B](f(x))
+      case x :: xs => List[B](f(x)) ++ map(xs)(f)
     }
-    // TODO
 
     /**
      * filter removes all elements from a list for which a given predicate
@@ -123,8 +124,11 @@ object EA03 {
      * @param f: A => Boolean the predicate
      * @return the filtered list.
      */
-    def filter[A](ls: List[A], f: A => Boolean): List[A] = ???
-    // TODO
+    def filter[A](ls: List[A])(f: A => Boolean): List[A] = ls match {
+      case Nil => List[A]()
+      case x :: Nil => if (f(x)) List[A](x) else List[A]()
+      case x :: xs => if (f(x)) List[A](x) ++ filter(xs)(f) else filter(xs)(f)
+    }
 
     /**
      * flatMap is very similar to map. However, the function returns a List,
@@ -134,8 +138,11 @@ object EA03 {
      * @return a List[B] containing the flattened results of applying f to all
      * elements of ls.
      */
-    def flatMap[A, B](ls: List[A], f: A => List[B]): List[B] = ???
-    // TODO
+    def flatMap[A, B](ls: List[A])(f: A => List[B]): List[B] = ls match{
+      case Nil => List[B]()
+      case x :: Nil => f(x)
+      case x :: xs => f(x) ++ flatMap(xs)(f)
+    }
 
     // COMBINING FUNCTIONS
 

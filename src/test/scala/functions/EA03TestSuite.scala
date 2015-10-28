@@ -3,6 +3,8 @@ package functions
 import org.scalatest.FunSuite
 import functions.EA03._
 
+import scala.collection.JavaConverters._
+
 class EA03TestSuite extends FunSuite {
     // Basics
     test("Tail removes the first element") {
