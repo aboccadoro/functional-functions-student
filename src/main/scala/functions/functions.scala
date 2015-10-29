@@ -61,7 +61,7 @@ object EA03 {
 
     // LIST FOLDING
 
-    /*
+    /**
      * foldLeft reduces a list down to a single value by iteratively applying a
      * function over the elements of the list and carrying the cumulative result
      * along.
@@ -92,7 +92,7 @@ object EA03 {
      */
     def sum(ls: List[Double]): Double = foldLeft(ls, 0.0)((B, A) => B + A)
 
-    def product[A](ls: List[Double]): Int = foldLeft(ls, 1)((B, A) => (B * A).toInt)
+    def product(ls: List[Double]): Int = foldLeft(ls, 1)((B, A) => (B * A).toInt)
 
     def length[A](ls: List[A]): Int = foldLeft(ls, 0)((B, A) => B + 1)
 
@@ -155,8 +155,7 @@ object EA03 {
      * length is greater than 0.
      * @return the average value of the largest values in the pairs.
      */
-    def maxAverage(ls: List[(Double, Double)]): Double = ???
-    // TODO
+    def maxAverage(ls: List[(Double, Double)]): Double  = sum(map(ls)(t => if(t._1 > t._2) t._1 else t._2))/length(ls)
 
     /**
      * variance takes a List[Double] and calculates the squared distance
@@ -169,6 +168,5 @@ object EA03 {
      * @param ls: List[Double] a list of values, whose length is greater than 0.
      * @return  the variance of the input.
      */
-    def variance(ls: List[Double]): Variance = ???
-    // TODO
+    def variance(ls: List[Double]): Double = sum(map(map(ls)(_ - sum(ls)/length(ls)))(Math.pow(_, 2)))/length(ls)
 }
