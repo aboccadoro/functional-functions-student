@@ -42,8 +42,13 @@ object EA03 {
      */
     def drop[A](ls: List[A], n: Int): List[A] = ls match {
       case Nil => List[A]()
-      case x :: Nil => if(n == 0) List[A](x) else List[A]()
-      case _ :: xs  => if(n > 0) drop(xs, n - 1) else xs
+      case x :: Nil => n match {case 0 => List[A](x); case _ => List[A]()}
+      case _ :: xs  => n match {case 0 => xs; case _ => drop(xs, n - 1)}
+    }
+
+    def dropHelper[A](n: Int, x: A): List[A] = n match {
+      case 0 => List[A](x)
+      case _ => List[A]()
     }
 
     /**
@@ -126,8 +131,8 @@ object EA03 {
      */
     def filter[A](ls: List[A])(f: A => Boolean): List[A] = ls match {
       case Nil => List[A]()
-      case x :: Nil => if (f(x)) List[A](x) else List[A]()
-      case x :: xs => if (f(x)) List[A](x) ++ filter(xs)(f) else filter(xs)(f)
+      case x :: Nil => f(x) match {case true => List[A](x); case false => List[A]()}
+      case x :: xs => f(x) match {case true => List[A](x) ++ filter(xs)(f); case false => filter(xs)(f)}
     }
 
     /**
